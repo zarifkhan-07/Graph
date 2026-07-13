@@ -1,0 +1,48 @@
+class Graph:
+    def __init__(self):
+        self.nodes=set()
+        self.edges={}
+    
+    def add_node(self,node):
+        self.nodes.add(node)
+    
+    def add_edges(self, node1, node2, weight=1):
+        if node1 not in self.nodes:
+            node1.add(node1)
+        
+        if node2 not in self.nodes:
+            node2.add(node2)
+        
+        if node1 not in self.edges:
+            self.edges[node1]=set()
+        self.edges[node1].add((node2,weight))
+
+        if node2 not in self.edges:
+            self.edges[node2]=set()
+        self.edges[node2].add((node1,weight))
+
+    def get_node(self):
+        return self.node
+    def get_edges(self):
+        return self.edges
+    def __repr__(self):
+        return str(self.nodes) + "-->" + str(self.edges)
+
+graph=Graph()
+
+graph.add_node("X")
+graph.add_node("Y")
+graph.add_node("Z")
+graph.add_node("A")
+graph.add_node("B")
+graph.add_node("C")
+
+graph.add_edges("X","Y")
+graph.add_edges("X","Z")
+graph.add_edges("Y","Z")
+graph.add_edges("Y","A")
+graph.add_edges("Z","B")
+graph.add_edges("A","B")
+graph.add_edges("A","C")
+graph.add_edges("B","C")
+print(graph)
